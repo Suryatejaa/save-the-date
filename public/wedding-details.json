@@ -1,0 +1,80 @@
+{
+  "couple": {
+    "partner1": {
+      "name": "Divya",
+      "fullName": "Divya (M.Sc)",
+      "role": "Bride"
+    },
+    "partner2": {
+      "name": "Shiva",
+      "fullName": "Shiva (B.Tech)",
+      "role": "Groom"
+    },
+    "tagline": "Two souls, one forever",
+    "story": "We met at a right time at a right place, and we have never left each other since then."
+  },
+  "wedding": {
+    "date": "April 03, 2026",
+    "dateISO": "2026-04-03",
+    "day": "Friday",
+    "time": "08:39 PM",
+    "venue": {
+      "name": "Vijay Function Hall",
+      "address": "Ramachandrapuram bypass road",
+      "city": "Ramachandrapuram, Andhra Pradesh",
+      "mapUrl": "https://maps.app.goo.gl/bJAMD94Z3KQjfm9S6?g_st=aw"
+    }
+  },
+  "schedule": [
+    {
+      "time": "10:00 AM",
+      "event": "Guest Arrival & Welcome",
+      "description": "Warm reception with traditional aarti and floral welcome"
+    },
+    {
+      "time": "1:00 PM",
+      "event": "Lunch & Celebration",
+      "description": "A feast of traditional Rajasthani delicacies and fusion cuisine"
+    },
+    {
+      "time": "4:00 PM",
+      "event": "Photography & Sunset",
+      "description": "Capturing golden hour moments by the palace lake"
+    },
+    {
+      "time": "7:00 PM",
+      "event": "Dinner & Celebration",
+      "description": "Dinner, dancing, and a night of memories under the stars"
+    },
+    {
+      "time": "8:39 PM",
+      "event": "Muhurtham",
+      "description": "Time to exchange vows and become husband and wife"
+    }
+  ],
+  "gallery": {
+    "caption": "A few moments from our journey",
+    "images": [
+      { "id": 1, "alt": "Couple portrait in garden" },
+      { "id": 2, "alt": "Pre-wedding shoot by the lake" },
+      { "id": 3, "alt": "Candid moment at a café" },
+      { "id": 4, "alt": "Holding hands at sunset" },
+      { "id": 5, "alt": "Laughing together outdoors" },
+      { "id": 6, "alt": "Dancing in the rain" }
+    ]
+  },
+  "rsvp": {
+    "message": "Your presence would make our day more beautiful. Kindly let us know if you'll be joining us.",
+    "deadline": "April 02, 2026",
+    "whatsapp": "+91 75693 44355",
+    "contactName": "Divya & Shiva"
+  },
+  "families": {
+    "bride": "Daughter of Mr. Surya Narayana & Mrs. Venkata Lakshmi",
+    "groom": "Son of Mr. Srinivasu & Mrs. Madhu Meeneswari"
+  },
+  "footer": {
+    "quote": "Today I marry my best friend.",
+    "hashtag": "#DivyaWedsShiva"
+  }
+}
