@@ -21,29 +21,6 @@ interface EventProps {
   };
 }
 
-const cards = [
-  {
-    icon: '📅',
-    iconClass: 'icon-date',
-    label: 'Date',
-    valueKey: 'dateValue',
-    subKey: 'day',
-  },
-  {
-    icon: '🕐',
-    iconClass: 'icon-time',
-    label: 'Time',
-    valueKey: 'time',
-    subKey: null,
-  },
-  {
-    icon: '📍',
-    iconClass: 'icon-venue',
-    label: 'Venue',
-    valueKey: 'venueName',
-    subKey: 'venueCity',
-  },
-];
 
 export default function EventSection({ data }: EventProps) {
   const cardsRef = useRef<HTMLDivElement>(null);
