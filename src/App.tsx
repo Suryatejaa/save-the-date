@@ -149,7 +149,18 @@ export default function App() {
       <DesktopBarrier />
 
       {!introComplete && (
-        <IntroOverlay onComplete={() => setIntroComplete(true)} />
+        <IntroOverlay 
+          onComplete={() => setIntroComplete(true)} 
+          onStart={() => {
+            if (audioRef.current && !isMuted) {
+              audioRef.current.play().catch(err => {
+                if (err.name !== 'AbortError') {
+                  console.error('Initial play failed:', err);
+                }
+              });
+            }
+          }}
+        />
       )}
 
       {/* Music Toggle Button */}
