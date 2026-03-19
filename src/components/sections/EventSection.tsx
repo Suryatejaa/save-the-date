@@ -46,7 +46,7 @@ export default function EventSection({ data }: EventProps) {
 
   const cardData = [
     {
-      icon: '📅', iconClass: 'icon-date', label: 'Date',
+      icon: '🗓️', iconClass: 'icon-date', label: 'Date',
       value: data.wedding.date, sub: data.wedding.day,
     },
     {
