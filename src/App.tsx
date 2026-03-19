@@ -59,44 +59,52 @@ export default function App() {
     audio.loop = true;
     audioRef.current = audio;
 
+    let hasStarted = false;
+
     const attemptPlay = () => {
-      if (audioRef.current && !isMuted) {
-        audioRef.current.play()
-          .then(() => {
-            // Once playing, we can remove the global interaction listeners
-            document.removeEventListener('click', attemptPlay);
-            document.removeEventListener('touchstart', attemptPlay);
-            document.removeEventListener('scroll', attemptPlay);
-          })
-          .catch((err) => {
-            if (err.name !== 'AbortError') {
-              console.log('Autoplay waiting for interaction:', err);
-            }
-          });
-      }
+      if (!audioRef.current || isMuted || hasStarted) return;
+
+      audioRef.current.play()
+        .then(() => {
+          hasStarted = true;
+          // Once playing, we can remove the global interaction listeners
+          cleanupListeners();
+        })
+        .catch((err) => {
+          if (err.name === 'NotAllowedError') {
+            // Still waiting for valid interaction, keep listeners
+            console.log('Interaction needed for BGM...');
+          } else if (err.name !== 'AbortError') {
+            console.error('Audio play error:', err);
+          }
+        });
     };
 
-    // Attach interaction listeners
-    document.addEventListener('click', attemptPlay, { once: true });
-    document.addEventListener('touchstart', attemptPlay, { once: true });
-    document.addEventListener('scroll', attemptPlay, { once: true });
+    const cleanupListeners = () => {
+      window.removeEventListener('click', attemptPlay);
+      window.removeEventListener('touchstart', attemptPlay);
+      window.removeEventListener('scroll', attemptPlay);
+    };
+
+    // Attach interaction listeners to window (more reliable for some events)
+    window.addEventListener('click', attemptPlay);
+    window.addEventListener('touchstart', attemptPlay);
+    window.addEventListener('scroll', attemptPlay);
 
     // Initial attempt
     attemptPlay();
 
     return () => {
+      cleanupListeners();
       audio.pause();
       audio.src = '';
       audioRef.current = null;
-      document.removeEventListener('click', attemptPlay);
-      document.removeEventListener('touchstart', attemptPlay);
-      document.removeEventListener('scroll', attemptPlay);
     };
   }, []);
 
   useEffect(() => {
     if (!audioRef.current) return;
-    
+
     if (isMuted) {
       audioRef.current.pause();
     } else {
@@ -140,7 +148,7 @@ export default function App() {
 
       {/* Music Toggle Button */}
       {introComplete && (
-        <button 
+        <button
           className={`music-toggle ${isMuted ? 'muted' : ''}`}
           onClick={toggleMute}
           aria-label={isMuted ? "Unmute music" : "Mute music"}
