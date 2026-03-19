@@ -6,7 +6,13 @@ const PARTICLE_COUNT = 18;
 
 interface RSVPProps {
   data: {
-    rsvp: {
+    rsvp_bride: {
+      message: string;
+      deadline: string;
+      whatsapp: string;
+      contactName: string;
+    };
+    rsvp_groom: {
       message: string;
       deadline: string;
       whatsapp: string;
@@ -43,9 +49,13 @@ export default function RSVPSection({ data }: RSVPProps) {
   }, []);
 
   const whatsappMsg = encodeURIComponent(
-    `Hi ${data.rsvp.contactName}! I'd love to attend the wedding of ${data.couple.partner1.name} & ${data.couple.partner2.name}. Count me in! 🎉`
+    `Hi ${data.rsvp_bride.contactName}! I'd love to attend the wedding of ${data.couple.partner1.name} & ${data.couple.partner2.name}. Count me in! 🎉`
   );
-  const waLink = `https://wa.me/${data.rsvp.whatsapp.replace(/[^0-9]/g, '')}?text=${whatsappMsg}`;
+  const whatsappMsg2 = encodeURIComponent(
+    `Hi ${data.rsvp_groom.contactName}! I'd love to attend the wedding of ${data.couple.partner1.name} & ${data.couple.partner2.name}. Count me in! 🎉`
+  );
+  const bride_waLink = `https://wa.me/${data.rsvp_bride.whatsapp.replace(/[^0-9]/g, '')}?text=${whatsappMsg}`;
+  const groom_waLink = `https://wa.me/${data.rsvp_groom.whatsapp.replace(/[^0-9]/g, '')}?text=${whatsappMsg2}`;
 
   const particles = Array.from({ length: PARTICLE_COUNT }, (_, i) => ({
     id: i,
@@ -77,6 +87,7 @@ export default function RSVPSection({ data }: RSVPProps) {
         ))}
       </div>
 
+      {/* //bride side button */}
       <div className="rsvp-card" ref={cardRef}>
         <span className="rsvp-icon">💌</span>
 
@@ -91,20 +102,29 @@ export default function RSVPSection({ data }: RSVPProps) {
           Will you <em>join us?</em>
         </motion.h2>
 
-        <div className="rsvp-deadline">Kindly respond by {data.rsvp.deadline}</div>
-
-        <p className="rsvp-message">{data.rsvp.message}</p>
-
+        <p className="rsvp-message">{data.rsvp_bride.message}</p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <a
-          href={waLink}
+          href={bride_waLink}
           target="_blank"
           rel="noopener noreferrer"
           className="rsvp-btn rsvp-btn-pulse"
           id="rsvp-whatsapp-btn"
         >
-          <span>💬 RSVP on WhatsApp</span>
+          <span>Confirm <b style={{ fontWeight: 'bold' }}>Divya</b> on WhatsApp</span>
         </a>
+        <a
+          href={groom_waLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rsvp-btn rsvp-btn-pulse"
+          id="rsvp-whatsapp-btn"
+        >
+          <span>Confirm <b style={{ fontWeight: 'bold' }}>Shiva</b> on WhatsApp</span>
+        </a>
+        </div>
       </div>
+
     </section>
   );
 }

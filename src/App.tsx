@@ -30,7 +30,13 @@ type WeddingData = {
     caption: string;
     images: Array<{ id: number; alt: string }>;
   };
-  rsvp: {
+  rsvp_bride: {
+    message: string;
+    deadline: string;
+    whatsapp: string;
+    contactName: string;
+  };
+  rsvp_groom: {
     message: string;
     deadline: string;
     whatsapp: string;

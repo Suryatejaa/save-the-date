@@ -32,11 +32,6 @@
       "description": "Warm reception with traditional aarti and floral welcome"
     },
     {
-      "time": "1:00 PM",
-      "event": "Lunch & Celebration",
-      "description": "A feast of traditional Rajasthani delicacies and fusion cuisine"
-    },
-    {
       "time": "4:00 PM",
       "event": "Photography & Sunset",
       "description": "Capturing golden hour moments by the palace lake"
@@ -63,11 +58,17 @@
       { "id": 6, "alt": "Dancing in the rain" }
     ]
   },
-  "rsvp": {
+  "rsvp_bride": {
     "message": "Your presence would make our day more beautiful. Kindly let us know if you'll be joining us.",
     "deadline": "April 02, 2026",
     "whatsapp": "+91 75693 44355",
-    "contactName": "Divya & Shiva"
+    "contactName": "Divya"
+  },
+  "rsvp_groom": {
+    "message": "Your presence would make our day more beautiful. Kindly let us know if you'll be joining us.",
+    "deadline": "April 02, 2026",
+    "whatsapp": "+91 86184 89879",
+    "contactName": "Shiva"
   },
   "families": {
     "bride": "Daughter of Mr. Surya Narayana & Mrs. Venkata Lakshmi",
